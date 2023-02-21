@@ -10,9 +10,10 @@
 --------------------------------------------------------------*/
 body {
   font-family: "Open Sans", sans-serif;
-  color: #ffb703;
   position: relative;
-  background: transparent;
+  background-image:url('assets/img/background/computer-animated-gif.gif');
+  background-position: center;
+  background-size: cover;
 }
 
 body::before {
