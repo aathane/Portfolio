@@ -18,12 +18,9 @@ body {
 body::before {
   content: "";
   position: fixed;
-  background: #010e1b;
+  background-image:url('https://bestanimations.com/Computers/funny-computer-animated-gif-7.gif');
+  background-position: center;
   background-size: cover;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 100vh;
 }
 
 
