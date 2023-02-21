@@ -12,24 +12,20 @@ body {
   font-family: "Open Sans", sans-serif;
   color: #fff;
   position: relative;
-  background-image:url('assets/img/background/computer-animated-gif.gif');
-  background-size:100%;
-  background-repeat: repeat-y;
-  background-attachment: fixed;
-  height:100%;
-  width:100%;
+  background: transparent;
 }
 
 body::before {
   content: "";
   position: fixed;
-  background-image:url('assets/img/background/computer-animated-gif.gif');
+  background: #010e1b;
   background-size: cover;
   left: 0;
   right: 0;
   top: 0;
   height: 100vh;
 }
+
 
 @media (min-width: 1024px) {
   body::before {
