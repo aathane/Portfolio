@@ -239,7 +239,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mobile-nav a:hover, .mobile-nav .active > a, .mobile-nav li:hover > a {
-  color: #2795F4;
+  color: #1c7d32;
   text-decoration: none;
 }
 
@@ -327,7 +327,7 @@ section.section-show {
 }
 
 section .container {
-  background: rgba(0, 100, 0, 0);
+  background: rgba(0, 0, 0, 0);
   padding: 30px;
 }
 
@@ -377,7 +377,7 @@ section .container {
 .about-me .content h3 {
   font-weight: 700;
   font-size: 26px;
-  color: #2795F4;
+  color: #1c7d32;
 }
 
 .about-me .content ul {
@@ -392,7 +392,7 @@ section .container {
 .about-me .content ul i {
   font-size: 20px;
   padding-right: 2px;
-  color: #2795F4;
+  color: #1c7d32;
 }
 
 .about-me .content p:last-child {
@@ -1067,6 +1067,7 @@ section .container {
     transform: rotate(360deg);
   }
 }
+
 /*--------------------------------------------------------------
 # Credits
 --------------------------------------------------------------*/
