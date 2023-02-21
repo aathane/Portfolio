@@ -23,7 +23,7 @@ body {
 body::before {
   content: "";
   position: fixed;
-  background: #010e1b;
+  background-image:url('assets/img/background/computer-animated-gif.gif');
   background-size: cover;
   left: 0;
   right: 0;
