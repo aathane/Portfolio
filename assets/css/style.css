@@ -10,7 +10,7 @@
 --------------------------------------------------------------*/
 body {
   font-family: "Open Sans", sans-serif;
-  color: #fff;
+  color: #ffb703;
   position: relative;
   background: transparent;
 }
@@ -18,11 +18,13 @@ body {
 body::before {
   content: "";
   position: fixed;
-  background-image:url('https://bestanimations.com/Computers/funny-computer-animated-gif-7.gif');
-  background-position: center;
+  background: #010e1b;
   background-size: cover;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100vh;
 }
-
 
 @media (min-width: 1024px) {
   body::before {
@@ -41,11 +43,6 @@ a:hover {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Raleway", sans-serif;
-}
-
-#selector {
-    width:100%;
-    height:100%;
 }
 
 /*--------------------------------------------------------------
