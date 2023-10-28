@@ -99,33 +99,45 @@
 
       <div class="row">
         <div class="col-lg-4" data-aos="fade-right">
-          <img src="assets/img/Augustin.png" class="img-fluid" alt="">
+            <img src="assets/img/Augustin.png" class="img-fluid" alt="">
         </div>
         <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-          <p> Etudiant de 1ère année en branche informatique en école d'ingénieur à l'UTBM, avec un intérêt marqué pour le développement de logiciels et 
-            l'intelligence artificielle. J'ai découvert mon amour pour la programmation alors que j'étais encore au lycée, et j'ai passé des heures à apprendre 
-            les différents langages de programmation pour créer des applications.
-         
-         <p>
-            Au cours de mes études, j'ai développé des compétences en programmation en utilisant des langages tels que Java, Python, C++ et HTML. 
-            Bien que je ne me suis pas encore spécialisé dans un domaine précis de l'informatique, j'ai acquis une solide compréhension des concepts de base de l'IA, 
-            tels que le deep learning et le traitement du langage naturel, en suivant des cours hors-emplois du temps et en effectuant des projets de recherche (voir la section "Projects").
-          </p>
-          <div class="row">
-            <div class="col-lg-6">
-              <ul>
-                <li><i class="icofont-rounded-right"></i> <strong>Birthday:</strong> 17 mars 2002</li>
-              </ul>
+            <div id="texte-fr" class="lang" style="display:none;">
+                <p>Etudiant de 2ème année en branche informatique en école d'ingénieur à l'UTBM, avec un intérêt marqué pour le développement de logiciels et
+                    l'intelligence artificielle. J'ai découvert mon amour pour la programmation alors que j'étais encore au lycée, et j'ai passé des heures à apprendre
+                    les différents langages de programmation pour créer des applications.</p>
+                <p>Au cours de mes études, j'ai développé des compétences en programmation en utilisant des langages tels que Java, Python, C++ et HTML.
+                    J'ai acquis une solide compréhension des concepts de base de l'IA, tels que le deep learning et le traitement du langage naturel, en suivant des cours hors-emplois du temps et en effectuant des projets de recherche (voir la section "Projects").</p>
             </div>
-            <div class="col-lg-6">
-              <ul>
-                <li><i class="icofont-rounded-right"></i> <strong>City:</strong> Grenoble & Belfort, France</li>
-                <li><i class="icofont-rounded-right"></i> <strong>Email:</strong> augustin.athane@utbm.fr</li>
-              </ul>
+            <div id="texte-en" class="lang">
+                <p>2nd year computer science student at the UTBM engineering school, with a strong interest in software development and
+                    artificial intelligence. I discovered my love for programming while I was still in high school, and spent hours learning
+                    different programming languages to create applications.</p>
+                <p>During my studies, I developed programming skills using languages such as Java, Python, C++ and HTML.
+                    I gained a solid understanding of the basic concepts of AI, such as deep learning and natural language processing, by taking off-schedule courses and conducting research projects (see the "Projects" section).</p>
             </div>
-          </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul>
+                        <li><i class="icofont-rounded-right"></i> <strong>Birthday:</strong> 17 mars 2002</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <ul>
+                        <li><i class="icofont-rounded-right"></i> <strong>City:</strong> Grenoble & Belfort, France</li>
+                        <li><i class="icofont-rounded-right"></i> <strong>Email:</strong> augustin.athane@utbm.fr</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
+    </div>
+
+    <button onclick="changeLanguage('fr')" class="btn-lang">
+        <img src="assets/img/flag-fr.png" alt="Français" />
+    </button>
+    <button onclick="changeLanguage('en')" class="btn-lang">
+        <img src="assets/img/flag-en.png" alt="English" />
+    </button>
 
     </div><!-- End About Me -->
 
@@ -511,6 +523,13 @@
       typeSpeed: 65,
       backSpeed: 65
     });
+  </script>
+
+  <script>
+    function changeLanguage(lang) {
+        $('.lang').hide();
+        $('#texte-' + lang).show();
+    }
   </script>
 
   <!-- Template Main JS File -->
