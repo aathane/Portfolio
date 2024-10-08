@@ -1,0 +1,71 @@
+/* Cards skills */
+.card-container {
+  display: flex; /* Utilise flexbox pour aligner les cartes en ligne */
+  flex-wrap: wrap; /* Permet aux cartes de passer à la ligne suivante si l'espace est insuffisant */
+  justify-content: center; /* Centre les cartes dans le conteneur */
+  gap: 40px; /* Espace entre les cartes */
+  padding: 20px; /* Ajoute un peu de padding autour du conteneur */
+  box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur et la hauteur totales */
+}
+
+.card {
+  width: 180px; /* Diminue légèrement la largeur de la carte */
+  height: 220px; /* Diminue légèrement la hauteur de la carte */
+  padding: 10px;
+  padding-top: 20px;
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transform: scale(1); /* Par défaut, la carte est à sa taille normale */
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+  position: relative; /* Pour l'effet sur l'image */
+}
+
+.card:hover {
+  transform: scale(1.1) !important; /* La carte grossit légèrement au survol */
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+  height: 90px;
+  max-width: 150px;
+  object-fit: contain; /* Assure que l'image n'est pas déformée */
+  margin-top: 15px; /* Ajoute du margin en haut pour éloigner l'image du bord supérieur */
+  transition: transform 0.3s ease-in-out; /* Ajoute une légère animation à l'image */
+}
+
+.card .description {
+  font-size: 18px; /* Augmente légèrement la taille de la police */
+  font-weight: bold; /* Met le texte en gras */
+  margin-top: 20px; /* Ajoute un espace entre l'image et le texte */
+  opacity: 0; /* Cache le texte par défaut */
+  transition: opacity 0.3s ease-in-out; /* Transition pour rendre le texte visible lors du survol */
+  text-align: center; /* Centre le texte horizontalement */
+  margin-top: 30px; /* Ajoute un espace au-dessus du texte */
+}
+
+.card:hover .description {
+  opacity: 1; /* Le texte devient visible au survol */
+}
+
+@media (max-width: 768px) {
+  .card-container {
+      gap: 10px; /* Réduit l'écart entre les cartes sur les petits écrans */
+  }
+
+  .card {
+      width: 150px; /* Réduit la taille des cartes sur les petits écrans */
+      height: 190px;
+  }
+
+  .card img {
+      width: 70px;
+      height: 70px;
+  }
+
+  .card .description {
+      font-size: 16px; /* Réduit la taille du texte sur les petits écrans */
+  }
+}

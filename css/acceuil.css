@@ -1,0 +1,137 @@
+/* Home Page Styles */
+
+/* Main container for the homepage */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centre le contenu horizontalement */
+    text-align: center;  /* Centre le texte */
+    width: 100%;
+    height: 100vh; /* Occupe toute la hauteur de la page */
+    padding: 0; /* Supprime les paddings */
+    box-sizing: border-box;
+    z-index: 3;
+}
+
+.text-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/*shiny*/
+.shin_text{
+    font-size: 67px;
+    text-align: left;
+    font-family: 'Didot', Arial, sans-serif;
+    color: #ffffff;
+    background: linear-gradient(to right, var(--gray) 0, var(--white) 10%, var(--gray) 20%);
+    background-size: 200%;
+    background-position: -100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s infinite linear;
+    animation-fill-mode: forwards;
+    font-weight: 600;
+    white-space: nowrap;
+    padding: 10px;
+}
+
+@keyframes shine {
+    0% {
+        background-position: -100%;
+    }
+    100% {
+        background-position: 100%;
+    }
+}
+
+/* Pour un meilleur responsive */
+@media (max-width: 768px) {
+    .shin_text {
+        font-size: 40px; /* Réduit la taille pour mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .shin_text {
+        font-size: 30px; /* Encore plus petit pour les petits écrans */
+    }
+}
+
+
+/* Decorations and Triangle Styles */
+
+/* Triangle container */
+.triangle-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Base triangle */
+.triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 40px solid var(--orange);
+}
+
+.triangle::before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 10px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 40px solid var(--black);
+    z-index: 1;
+}
+
+
+.triangle:nth-child(1) { 
+    border-bottom-color: var(--orange); 
+    transform: rotate(45deg); 
+    top: 10%; 
+    left: 5%;
+}
+
+.triangle:nth-child(2) { 
+    border-bottom-color: var(--orange); 
+    transform: rotate(90deg); 
+    top: 20%; 
+    left: 25%;
+}
+
+.triangle:nth-child(3) { 
+    border-bottom-color: var(--orange); 
+    transform: rotate(135deg); 
+    top: 30%; 
+    left: 45%;
+}
+
+.triangle:nth-child(4) { 
+    border-bottom-color: var(--orange); 
+    transform: rotate(180deg); 
+    top: 40%; 
+    left: 65%;
+}
+
+.triangle:nth-child(5) { 
+    border-bottom-color: var(--orange); 
+    transform: rotate(225deg); 
+    top: 50%; 
+    left: 85%;
+}

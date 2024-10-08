@@ -1,3 +1,3 @@
-// README
-
-A ajouter : posibilité de joueur aux jeux, d'acceder au site html et d'utiliser le modèle de traduciton
+Site non terminé.
+Si certaines choses ne fonctionnent pas cela est normale.
+README bientot disponible. 
