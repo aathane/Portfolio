@@ -1,39 +1,35 @@
 // AFFICHER LES PAGES
+// Fonction générique pour charger le contenu d'une page et l'insérer dans un élément
+function loadContent(url, elementId) {
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById(elementId).innerHTML = data;
+        })
+        .catch(error => console.error(`Erreur lors du chargement du contenu de ${url}:`, error));
+}
 
-fetch('home.html')
-.then(response => response.text())
-.then(data => {
-    document.getElementById('main_content').innerHTML = data;
-})
-.catch(error => console.error('Erreur lors du chargement du contenu:', error));
+// Charger le contenu pour chaque section
+loadContent('home.html', 'main_content');
+loadContent('about_me.html', 'about_content');
+loadContent('projects.html', 'projects_content');
+loadContent('skills.html', 'skills_content');
+loadContent('experience.html', 'experience_content');
 
-fetch('about_me.html')
-.then(response => response.text())
-.then(data => {
-    document.getElementById('about_content').innerHTML = data;
-})
-.catch(error => console.error('Erreur lors du chargement du contenu:', error));
+// Derniere page
+loadContent('green.html', 'last_page_content');
 
-fetch('projects.html')
-.then(response => response.text())
-.then(data => {
-    document.getElementById('projects_content').innerHTML = data;
-})
-.catch(error => console.error('Erreur lors du chargement du contenu:', error));
 
-fetch('skills.html')
-.then(response => response.text())
-.then(data => {
-    document.getElementById('skills_content').innerHTML = data;
-})
-.catch(error => console.error('Erreur lors du chargement du contenu:', error));
+// Charger le contenu pour chaque modal
+loadContent('pages/taln.html', 'popup_taln');
+loadContent('pages/genetique.html', 'popup_genetique');
+loadContent('pages/eventum.html', 'popup_eventum');
+loadContent('pages/azul.html', 'popup_azul');
 
-fetch('experience.html')
-.then(response => response.text())
-.then(data => {
-    document.getElementById('experience_content').innerHTML = data;
-})
-.catch(error => console.error('Erreur lors du chargement du contenu:', error));
+
+
+
+
 
 // Extention de hr
 
@@ -182,3 +178,61 @@ window.addEventListener('scroll', animateCards);
 
 // Exécuter une fois au chargement de la page
 window.addEventListener('load', animateCards);
+
+// Fonction pour afficher le détail des projets 
+function showModal(suffix) {
+    const popupId = `popup_${suffix}`;
+    const popup = document.getElementById(popupId);
+    if (!popup) {
+        console.error(`Element with id ${popupId} not found.`);
+        return;
+    }
+    
+    // Enlève la classe cachée
+    popup.classList.remove('hidden'); 
+    // Un léger délai pour permettre la transition
+    setTimeout(() => {
+        popup.classList.add('show'); // Affiche la modale
+        document.body.classList.add('modal-open'); // Active l'effet de fondu
+    }, 10); 
+
+    const scrollY = window.scrollY; // Récupérer la position actuelle du défilement
+
+    // Ajouter la classe pour désactiver le défilement
+    document.documentElement.classList.add('no-scroll');
+
+    // Fixer le défilement de la page
+    document.body.style.position = 'fixed'; // Évite le reflow de la page
+    document.body.style.top = `-${scrollY}px`; // Conserve la position actuelle
+}
+
+function closeModal(suffix) {
+    const popupId = `popup_${suffix}`;
+    const popup = document.getElementById(popupId);
+    if (!popup) {
+        console.error(`Element with id ${popupId} not found.`);
+        return;
+    }
+
+    // Retirer la classe show pour déclencher la transition
+    popup.classList.remove('show');
+
+    // Après un délai pour laisser le temps à l'animation de se terminer, cacher l'élément
+    setTimeout(() => {
+        popup.classList.add('hidden');
+        document.body.classList.remove('modal-open'); // Désactive l'effet de fondu
+
+        // Retirer la classe pour réactiver le défilement
+        document.documentElement.classList.remove('no-scroll');
+
+        // Récupérer la position du scroll
+        const scrollY = document.body.style.top; // Obtient la position
+
+        // Réinitialiser le style du body
+        document.body.style.position = '';
+        document.body.style.top = '';
+
+        // Remettre l'utilisateur à la position de défilement précédente
+        window.scrollTo(0, parseInt(scrollY || '0') * -1); // Scroll back to the original position
+    }, 300); // Correspond à la durée de la transition CSS
+}

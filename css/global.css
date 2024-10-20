@@ -333,3 +333,21 @@ li {
         grid-template-columns: 1fr; /* Une seule colonne sur les petits écrans */
     }
 }
+
+
+
+.description {
+    display: none; /* Cache la description par défaut */
+    position: absolute;
+    bottom: -80px;
+    right: -30px;
+    width: 110px;
+    font-size: 16px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6); /* Add background for readability */
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 5;
+    text-align: center; /* Centre le texte à l'intérieur */
+}

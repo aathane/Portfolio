@@ -104,23 +104,18 @@
     transform: scale(1.1); /* Zoom sur l'image au survol */
 }
 
-.interests-description {
-    display: none; /* Cache la description par défaut */
-    margin-top: 10px;
-    font-size: 16px;
-    color: white; /* Texte blanc */
-    background-color: var(--gray); /* Fond gris */
+.interest {
     padding: 8px; /* Ajoute du padding autour du texte */
-    border-radius: 8px; /* Ajoute des coins arrondis */
-    position: absolute; /* Positionne la description de manière absolue */
+    margin-top: 10px;
     top: 100%; /* Positionne la description en dessous de l'image */
     left: 50%;
     transform: translateX(-50%); /* Centre horizontalement la description */
-    z-index: 1; /* Assure que la description est au-dessus de l'image */
     width: 100%; /* Assure que la description prend toute la largeur de l'image */
     box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
+    align-items: center; /* Centre verticalement le texte */
+    justify-content: center; /* Centre horizontalement le texte */
 }
 
-.image-item:hover .interests-description {
-    display: block; /* Affiche la description au survol */
+.image-item:hover .interest {
+    display: flex; /* Affiche la description au survol */
 }

@@ -1,0 +1,56 @@
+<div class="modal-content">
+    <div class="close-button-container">
+        <span class="close-button" onclick="closeModal('genetique')" description="close">&times;</span>
+    </div>
+    <div class="div_h">
+        <h3>Algorithme génétique</h3>
+    </div>
+
+    <h4>Liens</h4>
+
+    <p>
+        Pour plus de detail je vous invite a <a class="link" href="https://github.com/gilles-maurer/IT45_projet/tree/main">explorer le code source</a> du projet</p>
+    </p>
+
+
+    <h4>Présentation du projet</h4>
+
+    <p>
+        Ce projet vise à optimiser l'attribution de missions aux employés en divisant le processus en deux étapes principales. Il est mis en œuvre en C++ et s'appuie sur des algorithmes génétique, déterministes et évolutifs pour résoudre le problème de manière efficace.
+    </p>
+    
+    <p>
+        L'objectif de ce projet est d'attribuer des missions à des employés de manière à maximiser l'efficacité en fonction de divers critères tels que les compétences, la proximité géographique et la répartition de la charge de travail.
+    </p>
+
+    <p> L'algorithm est compose de deux parties :</p>
+
+    <p><strong>Partie 1 - Assignation des tâches aux centres :</strong></p>
+    <p>La première étape consiste à répartir les missions entre les différents centres. Pour ce faire, on calcule la distance entre les centres et les missions, en veillant à ce que les missions soient assignées aux centres les plus proches géographiquement, ce qui permet d'optimiser la logistique et de réduire les temps de déplacement.</p>
+
+    <p><strong>Partie 2 - Affectation des tâches aux employés (algorithme génétique) :</strong></p>
+    <p>Dans la deuxième étape, un algorithme génétique est utilisé pour assigner les missions aux employés. L'espace de solution initial est créé sur la base des affectations de la première partie. L'algorithme fait évoluer la solution sur plusieurs générations afin de minimiser des facteurs tels que :</p>
+    <ul>
+        <li>Le nombre de missions non assignées.</li>
+        <li>La distance totale parcourue par les employés.</li>
+        <li>L'adéquation entre les compétences des employés et les exigences des missions.</li>
+    </ul>
+
+    <h4>Caractéristiques principales :</h4>
+    <ul>
+        <li>Analyse des données : Le système lit les données d'entrée telles que les listes d'employés, les détails des missions et les emplacements des centres à partir de fichiers CSV.</li>
+        <li>Calcul de la distance : Les distances entre les missions et les centres sont calculées et stockées pour faciliter l'affectation.</li>
+        <li>Segmentation des employés et des missions : Les employés et les missions sont regroupés sur la base de compétences spécifiques (par exemple, LSF, LPC) afin de garantir un alignement correct.</li>
+        <li>Formation de groupes : Le système organise les missions en groupes en fonction de leur proximité avec les centres.</li>
+        <li>Optimisation par algorithme génétique : Cette étape optimise la distribution des missions aux employés, en affinant les solutions par des processus de mutation, de croisement et de sélection.</li>
+    </ul>
+    
+    <h4>Outils et technologies :</h4>
+
+    <div class="card-container long">
+        <div class="card always-visible">
+            <img src="assets/img/skills/c++.png" alt="C++" class="skill-icon">
+            <p class="card-description">C++</p>
+        </div>
+    </div>
+</div>

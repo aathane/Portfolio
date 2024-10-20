@@ -6,6 +6,7 @@
   gap: 40px; /* Espace entre les cartes */
   padding: 20px; /* Ajoute un peu de padding autour du conteneur */
   box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur et la hauteur totales */
+  margin: 0px 30px;
 }
 
 .card {
@@ -23,6 +24,10 @@
   position: relative; /* Pour l'effet sur l'image */
 }
 
+.card.always-visible {
+  transform: scale(1) !important; /* Toujours visible */
+}
+
 .card:hover {
   transform: scale(1.1) !important; /* La carte grossit légèrement au survol */
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
@@ -36,7 +41,7 @@
   transition: transform 0.3s ease-in-out; /* Ajoute une légère animation à l'image */
 }
 
-.card .description {
+.card .card-description {
   font-size: 18px; /* Augmente légèrement la taille de la police */
   font-weight: bold; /* Met le texte en gras */
   margin-top: 20px; /* Ajoute un espace entre l'image et le texte */
@@ -46,7 +51,7 @@
   margin-top: 30px; /* Ajoute un espace au-dessus du texte */
 }
 
-.card:hover .description {
+.card:hover .card-description {
   opacity: 1; /* Le texte devient visible au survol */
 }
 
@@ -65,7 +70,7 @@
       height: 70px;
   }
 
-  .card .description {
+  .card .card-description {
       font-size: 16px; /* Réduit la taille du texte sur les petits écrans */
   }
 }

@@ -1,3 +1,15 @@
+.project-wrapper {
+    position: relative;
+    width: 100%; /* Prend toute la largeur disponible */
+    max-width: 900px;
+    height: 500px;
+    display: flex; /* Utilise flexbox pour le positionnement */
+    justify-content: flex-start; /* Aligne le contenu à gauche */
+    align-items: flex-start; /* Aligne le contenu en haut */
+    margin: 100px auto; /* Ajoute de l'espace au-dessus et en dessous */
+    cursor: pointer; 
+}
+
 .project-container {
     position: relative;
     width: 100%;
@@ -8,6 +20,7 @@
     background-size: cover;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
     z-index: 1; /* En haut de la hiérarchie */
+    margin: 0; /* Supprimer la marge ici */
 }
 
 .transparent-background {
@@ -60,9 +73,6 @@
     transition: all 0.5s ease;
 }
 
-.project-text h1:hover {
-    font-size: 4em; /* Agrandissement lors du survol */
-}
 
 .project-text p {
     margin-top: 10px;
@@ -71,7 +81,7 @@
     color: white;
 }
 
-.project-text .description {
+.project-text .presentation {
     margin-top: 5px;
     font-size: 1.3em;
     font-style: italic;
@@ -79,36 +89,278 @@
     color: white;
 }
 
-.case-study {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: var(--pink);
-    color: white;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 1em;
-    transition: all 0.3s ease;
-}
 
-.big-number {
-    position: absolute;
-    top: -10px; /* Dépasse légèrement du cadre */
-    right: -10px; /* Place le chiffre légèrement en dehors du cadre */
-    font-size: 10em;
-    color: rgba(255, 255, 255, 0);
-    z-index: 4; /* Au-dessus de tout */
-    transition: color 0.5s ease;
-}
-
-.project-container:hover .green-background {
+.project-wrapper:hover .green-background {
     transform: translateX(0); /* Fait apparaître le fond vert */
 }
 
-.project-container:hover .big-number {
-    color: rgba(255, 255, 255, 0.2);
+
+.project-wrapper:hover .project-text h1 {
+    font-size: 3.5em; /* Agrandissement du titre */
 }
 
-.project-container:hover .project-text h1 {
-    font-size: 3.5em; /* Agrandissement du titre */
+/* BIG NUMBER */
+.number-container {
+    position: absolute;
+    top: -95px; /* Positionné tout en haut */
+    right: -25px; /* Positionné tout à droite */
+    z-index: 4; /* Assurez-vous qu'il est au-dessus des autres éléments */
+    margin: 0; /* Élimine les marges */
+    padding: 0; /* Élimine les remplissages */
+}
+
+/* Suppression de la classe .big-number::after et modification de .big-number */
+.big-number {
+    position: absolute;
+    top: 0; /* Gardez cette propriété pour le placer en haut */
+    right: 0; /* Gardez cette propriété pour le placer à droite */
+    font-size: 11em;
+    color: rgba(150, 150, 150, 0); /* Couleur initiale : transparent */
+    z-index: 4; 
+    transition: color 0.5s ease; 
+    overflow: hidden; 
+    margin: 0; /* Élimine les marges */
+    padding: 0; /* Élimine les remplissages */
+}
+
+/* Animation pour le changement de couleur */
+@keyframes fillColor {
+    0% {
+        color: rgba(150, 150, 150, 0); /* Transparent */
+        transform: translateY(100%); /* Commence en bas */
+    }
+    100% {
+        color: white; /* Couleur finale */
+        transform: translateY(0); /* Se déplace vers le haut */
+    }
+}
+
+/* Au hover, appliquer l'animation */
+.project-wrapper:hover .number-container .big-number {
+    animation: fillColor 0.5s forwards 0.5s; /* Exécute l'animation après 3 secondes */
+}
+
+
+
+
+/* Styles pour les détails du projet */
+.modal {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0); /* Fond transparent par défaut */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centre horizontalement et verticalement */
+    z-index: 1000; /* Place la modale au-dessus de tout */
+    overflow: hidden; /* Évite le débordement */
+    transition: background-color 0.3s ease; /* Animation pour le fondu */
+}
+
+.modal.show {
+    background-color: rgba(0, 0, 0, 0.7); /* Remplace le fond par noir semi-transparent */
+}
+
+.modal-content {
+    background-color: var(--white);
+    width: 85%; /* Largeur de la modal */
+    height: 85%; /* Limite la hauteur de la modal */
+    padding: 0 50px; /* Ajout de padding pour le contenu */
+    box-sizing: border-box; /* Assure que le padding n'augmente pas la taille de la div */
+    overflow-y: auto; /* Ajoute un défilement pour la hauteur si le contenu dépasse */
+    overflow-x: hidden; /* Bloque le défilement horizontal */
+    transform: translateY(100%); /* Commence cachée en bas */
+    transition: transform 0.3s ease; /* Animation pour glisser */
+}
+
+.modal.show .modal-content {
+    transform: translateY(0); /* Remonte la modal */
+}
+
+.close-button-container {
+    position: sticky;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 50px;
+    background-color: transparent;
+}
+
+.close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 45px;
+    cursor: pointer;
+    font-weight: bold; /* Ajoute du gras */
+    color: var(--pink); /* Change la couleur en rouge */
+    transition: transform 0.3s ease, color 0.3s ease; /* Transition douce pour l'effet */
+}
+
+.close-button:hover {
+    transform: rotate(180deg) scale(1.2); /* Rotation de 180 degrés et agrandissement */
+}
+
+
+/* Masque la modale par défaut */
+.hidden {
+    display: none;
+}
+
+/* Désactive le défilement lorsque la modale est active */
+html.no-scroll,
+body.no-scroll {
+    overflow: hidden !important;
+}
+
+/* Classe pour activer le style de fond lorsque la modale est ouverte */
+.modal-open {
+    overflow: hidden; /* Désactive le défilement sur le corps */
+}
+
+
+/*Fleche plus de detail */
+/* Styles pour le texte et la flèche */
+/* Bouton */
+.arrow-container { 
+    position: absolute; /* Positionnement absolu */
+    bottom: 100px; /* Positionné en bas */
+    left: 50%; /* Centré horizontalement */
+    transform: translate(-50%, 100px); /* Centré par rapport à l'élément parent et commence en bas */
+    text-align: center; /* Centrer le contenu à l'intérieur */
+    opacity: 0; /* Initialement invisible */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transition pour l'effet d'apparition */
+    display: flex; /* Utilisation de flexbox */
+    flex-direction: column; /* Aligne les enfants en colonne */
+    align-items: center; /* Centre les enfants horizontalement */
+}
+
+/* Affiche la flèche et le bouton au survol de .project-wrapper */
+.project-wrapper:hover .arrow-container {
+    opacity: 1; /* Rendre visible */
+    transform: translate(-50%, -20px); /* Monte à sa position finale */
+}
+
+/* Animation inverse pour cacher la flèche et le bouton lorsque le curseur n'est plus sur .project-wrapper */
+.project-wrapper:not(:hover) .arrow-container {
+    opacity: 0; /* Rendre invisible */
+    transform: translate(-50%, 100px); /* Retourne à sa position de départ */
+}
+
+/* Style pour le bouton */
+
+.details-button {
+    display: inline-block; /* Affichage en ligne */
+    background-color: var(--pink) !important; /* Couleur de fond du bouton */
+    color: var(--white) !important; /* Couleur du texte */
+    font-size: 30px !important; /* Taille de la police */
+    border: none; /* Supprime la bordure */
+    padding: 10px 20px; /* Ajoute du padding */
+    cursor: pointer; /* Change le curseur au survol */
+    border-radius: 5px; /* Arrondit les coins */
+    position: relative; /* Nécessaire pour le positionnement de la flèche */
+    z-index: 1; /* S'assurer que le bouton est au-dessus */
+    transition: background-color 0.5s ease; /* Transition de la couleur de fond */
+}
+
+/* Style pour la flèche */
+.arrow {
+    font-size: 40px; /* Taille de la flèche */
+    font-weight: bolder;
+    color: var(--white); /* Couleur de la flèche */
+    margin-top: -90px; /* Espace négatif pour que la flèche touche le bouton */
+    transition: transform 0.5s ease; /* Transition pour le mouvement de la flèche */
+    position: relative; /* Pour le positionnement par rapport au bouton */
+    z-index: 0; /* S'assurer que la flèche est en dessous du bouton */
+}
+
+/* Lorsque le bouton est survolé, la couleur change et la flèche monte */
+.details-button:hover {
+    background-color: var(--purple) !important; /* Couleur violet au survol */
+}
+
+/* Lorsque le bouton est survolé, la flèche monte */
+.details-button:hover + .arrow {
+    transform: translateY(-20px); /* Monte la flèche vers le haut */
+}
+
+
+
+
+
+
+/* Rendre le texte plus grand lorsque hover */
+.project-wrapper:hover .project-text {
+    transform: translateY(-100px); /* Monte de 100px */
+    transition: transform 0.5s ease, font-size 0.5s ease; /* Transition pour le mouvement et la taille */
+    font-size: 1.2em; /* Augmente la taille du texte */
+}
+
+/* Animation inverse pour le texte lorsque le curseur n'est plus sur .project-wrapper */
+.project-wrapper:not(:hover) .project-text {
+    transform: translateY(0); /* Retourne à la position d'origine */
+    transition: transform 0.5s ease, font-size 0.5s ease; /* Transition pour le mouvement et la taille */
+    font-size: 1em; /* Réinitialise la taille du texte */
+}
+
+
+
+/* BAGE*/
+
+.badge-image-container {
+    position: absolute; /* Place le badge au-dessus du project-wrapper */
+    bottom: 20px; /* Ajuste selon tes besoins */
+    right: 30px; /* Ajuste selon tes besoins */
+    z-index: 4; /* Augmente le z-index pour que tout le contenu soit au-dessus */
+    margin: 0;
+    padding: 0;
+    opacity: 0; /* Initialement invisible */
+    visibility: hidden; /* Initialement caché */
+    transition: opacity 0.5s ease, visibility 0.5s ease; /* Transition pour l'effet de fondu */
+}
+
+.badge-image-langage {
+    width: 60px; /* Taille de l'image */
+    height: auto; /* Conserve les proportions */
+    position: relative;
+    top: 0; /* Ajuste selon tes besoins */
+    left: 0; /* Ajuste selon tes besoins */
+    z-index: 5; /* Place l'image au-dessus du cercle */
+}
+
+.badge-image-round {
+    content: '';
+    position: absolute;
+    top: 0; /* Ajuste selon tes besoins */
+    left: 0;
+    width: 60px; /* Diamètre du cercle */
+    height: 60px; /* Diamètre du cercle */
+    background-color: var(--white); /* Couleur de fond avec une légère transparence */
+    border-radius: 50%; /* Rend le fond circulaire */
+    z-index: 4; /* Place le cercle derrière l'image, mais au-dessus du conteneur */
+}
+
+.round-c {
+    width: 50px !important; /* Diamètre du cercle */
+    height: 50px !important; /* Diamètre du cercle */
+    top: 10px; /* Ajuste selon tes besoins */
+    left: 10px;
+}
+
+/* Affiche la div au survol de .project-wrapper */
+.project-wrapper:hover .badge-image-container {
+    opacity: 1; /* Rendre visible */
+    visibility: visible; /* Rendre visible */
+}
+
+.badge-image-container:hover .description {
+    display: block;
+}
+
+
+.long{
+    margin: 0 0 60px 0 !important;
+    padding: 0 !important;
 }
